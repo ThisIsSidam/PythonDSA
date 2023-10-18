@@ -132,13 +132,3 @@ class LinkedList:
             temp = after
 
     
-
-if __name__ == "__main__":
-    ll = LinkedList(5)
-    ll.prepend(4)
-    ll.prepend(6)
-    # ll.pop() 
-
-    ll.reverse()
-    ll.print_list()
-    
