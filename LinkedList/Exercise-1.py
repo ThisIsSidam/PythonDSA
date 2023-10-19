@@ -1,7 +1,13 @@
 # Name : Anshu Kumar Singh
 # Date : 
-# Topic : Linked List
+# Title : Exersize 1
 
+
+# Write a method to find and return the middle node in the Linked List WITHOUT using the length attribute.
+
+# The covered area has already written class and class members. The method from the question is written
+# below the covered area.
+# -------------------------------------------------------------------------------------------------------
 
 class Node:
     def __init__ (self, value):
@@ -136,4 +142,28 @@ class LinkedList:
             before = temp
             temp = after
 
+# -------------------------------------------------------------------------------------------------------
+
+    def getMiddle(self):
+        slow = self.head
+        fast = self.head
+        while fast.next and fast.next.next:
+            slow = slow.next
+            fast = fast.next.next
+        return slow.value
     
+
+ll = LinkedList(0)
+for i in range(1, 10):
+    ll.append(i)
+
+ll.print_list()
+print('--')
+print(ll.getMiddle())
+print('--')
+ll.pop()
+print('--')
+ll.print_list()
+print('--')
+print(ll.getMiddle())
+
