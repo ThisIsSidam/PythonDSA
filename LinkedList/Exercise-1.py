@@ -1,7 +1,6 @@
 # Name : Anshu Kumar Singh
-# Date : 
+# Date : 19/10/23
 # Title : Exersize 1
-
 
 # Write a method to find and return the middle node in the Linked List WITHOUT using the length attribute.
 
