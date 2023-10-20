@@ -1,8 +1,23 @@
 # Name : Anshu Kumar Singh
-# Date : 19/10/23
-# Title : Exercise 1 - Find Middle Node
+# Date : 20/10/23
+# Title : Exercise 2 - LL Has Loop
 
-# Write a method to find and return the middle node in the Linked List WITHOUT using the length attribute.
+'''
+Write a method called has_loop that is part of the linked list class.
+The method should be able to detect if there is a cycle or loop present in the linked list.
+The method should utilize Floyd's cycle-finding algorithm, also known as the "tortoise and hare" algorithm, 
+to determine the presence of a loop efficiently.
+
+The method should follow these guidelines:
+
+Create two pointers, slow and fast, both initially pointing to the head of the linked list.
+Traverse the list with the slow pointer moving one step at a time, while the fast pointer moves two steps at a time.
+If there is a loop in the list, the fast pointer will eventually meet the slow pointer. If this occurs, the method 
+should return True.
+
+If the fast pointer reaches the end of the list or encounters a None value, it means there is no loop in the list. 
+In this case, the method should return False.
+'''
 
 # The covered area has already written class and class members. The method from the question is written
 # below the covered area.
@@ -143,26 +158,29 @@ class LinkedList:
 
 # -------------------------------------------------------------------------------------------------------
 
-    def getMiddle(self):
+    def has_loop(self):
         slow = self.head
         fast = self.head
-        while fast.next and fast.next.next:
+
+        while fast is not None and fast.next is not None:
             slow = slow.next
             fast = fast.next.next
-        return slow.value
-    
+            if slow == fast:
+                return True
 
+        return False
+    
 ll = LinkedList(0)
-for i in range(1, 10):
+for i in range (1, 10):
     ll.append(i)
 
 ll.print_list()
-print('--')
-print(ll.getMiddle())
-print('--')
-ll.pop()
-print('--')
-ll.print_list()
-print('--')
-print(ll.getMiddle())
+print("----")
+
+print("Has Loop: ", ll.has_loop())
+
+ll.tail.next = ll.head # To create a loop
+print("Has Loop: ", ll.has_loop())
+
+
 

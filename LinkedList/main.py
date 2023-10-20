@@ -1,7 +1,6 @@
 # Name : Anshu Kumar Singh
-# Date : 
-# Topic : Linked List
-
+# Date : 18/10/23
+# Title : Linked List
 
 class Node:
     def __init__ (self, value):
