@@ -19,7 +19,7 @@ If the fast pointer reaches the end of the list or encounters a None value, it m
 In this case, the method should return False.
 '''
 
-# The covered area has already written class and class members. The method from the question is written
+# The covered area has already written class and class members. The method from the exercise is written
 # below the covered area.
 # -------------------------------------------------------------------------------------------------------
 

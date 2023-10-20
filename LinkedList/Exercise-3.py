@@ -1,8 +1,16 @@
 # Name : Anshu Kumar Singh
-# Date : 19/10/23
-# Title : Exercise 1 - Find Middle Node
+# Date : 20/10/23
+# Title : Exercise 3 - Remove Duplicates
 
-# Write a method to find and return the middle node in the Linked List WITHOUT using the length attribute.
+'''
+You are given a singly linked list that contains integer values, where some of these values may be duplicated.
+
+Your task is to implement a method called remove_duplicates() within the LinkedList class that removes all 
+duplicate values from the list.
+
+Your method should not create a new list, but rather modify the existing list in-place, preserving the 
+relative order of the nodes.
+'''
 
 # The covered area has already written class and class members. The method from the exercise is written
 # below the covered area.
@@ -143,26 +151,34 @@ class LinkedList:
 
 # -------------------------------------------------------------------------------------------------------
 
-    def getMiddle(self):
-        slow = self.head
-        fast = self.head
-        while fast.next and fast.next.next:
-            slow = slow.next
-            fast = fast.next.next
-        return slow.value
-    
+    def remove_duplicates(self):
+        index = 0
+        temp = self.head
+
+        values = set()
+
+        while temp is not None:
+            if temp.value in values:
+                temp = temp.next
+                self.remove(index)
+                continue
+        
+            values.add(temp.value)
+            temp = temp.next
+            index += 1
 
 ll = LinkedList(0)
-for i in range(1, 10):
+for i in range(1, 4):
     ll.append(i)
 
+for i in range(2, 9):
+    ll.append(i)
+
+ll.append(6)
+
 ll.print_list()
-print('--')
-print(ll.getMiddle())
-print('--')
-ll.pop()
-print('--')
+print("-- Removed --")
+
+ll.remove_duplicates()
 ll.print_list()
-print('--')
-print(ll.getMiddle())
 
