@@ -1,28 +1,29 @@
 # Name : Anshu Kumar Singh
 # Date : 22/10/23
-# Title : Exercise 5 - Reverse Between
+# Title : Exercise 6 - Partition List
 
 '''
-You are given a singly linked list and two integers m and n. Your task is to write a method 
-reverse_between within the LinkedList class that reverses the nodes of the linked list from 
-index m to index n (inclusive) in one pass and in-place.
+You are given a singly linked list implementation in Python that does not have a tail pointer 
+(which will make this method simpler to implement).
 
-Input----
-The method reverse_between takes two integer inputs m and n.
-The method will only be passed valid indexes (you do not need to test whether the indexes are
-out of bounds)
+You are tasked with implementing a method partition_list(self, x) that will take an integer x and 
+partition the linked list such that all nodes with values less than x come before nodes with values
+greater than or equal to x. You should preserve the original relative order of the nodes in each of 
+the two partitions.
 
-Output----
-The method should modify the linked list in-place by reversing the nodes from index m to index n.
-If the linked list is empty or has only one node, the method should return None.
+You need to implement this method as a method of the LinkedList class. The method should take an 
+integer x as input. If the linked list is empty, the method should return None.
 
-Example----
-Suppose the linked list is 1 -> 2 -> 3 -> 4 -> 5, and m = 2 and n = 4. Then, the method should 
-modify the linked list to 1 -> 2 -> 5 -> 4 -> 3 .
+To implement this method, you should create two new linked lists. These two linked lists will be made
+up of the original nodes from the linked list that is being partitioned, one for nodes less than x and
+one for nodes greater than or equal to x.  None of the nodes from the linked list should be duplicated.
 
-Constraints----
-The algorithm should run in one pass and in-place, with a time complexity of O(n) and a space 
-complexity of O(1).
+The creation of a limited number of new nodes is allowed (e.g., dummy nodes to facilitate the partitioning
+process).
+
+You should then traverse the original linked list and append each node to the appropriate new linked list.
+
+Finally, you should connect the two new linked lists together.
 '''
 
 # The covered area has already written class and class members. The method from the exercise is written
@@ -164,53 +165,47 @@ class LinkedList:
 
 # -------------------------------------------------------------------------------------------------------
 
-    def reverse_between(self, m, n):
-        if self.length == 0 or self.length == 1:
-            return False
-        
-        index = m
-        pre_cutoff = self.get(m-1)
-        before = temp = after = pre_cutoff.next
+    def partition_list(self, x):
+        if self.head is None:
+            return None
 
-        # Using the same action we did in reverse method.
-        while index != n+1:
-            after = temp.next
-            temp.next = before
-            before = temp
-            temp = after
-            index += 1
+        temp = self.head
+        first = LinkedList(0)
+        second = LinkedList(0)
+        f_temp = first.head
+        s_temp = second.head
 
-        pre_cutoff.next.next = temp
-        pre_cutoff.next = before
-        return True
+        while temp is not None:
+            if temp.value < x:
+                f_temp.next = temp
+                f_temp = f_temp.next
+                temp = temp.next
+            else:
+                s_temp.next = temp
+                s_temp = s_temp.next
+                temp = temp.next
 
-ll = LinkedList(0)
-for i in range(1, 5):
-    ll.append(i)
+        s_temp.next = None
+        self.head = first.head.next
+        f_temp.next = second.head.next
 
+
+
+ll = LinkedList(2)
+ll.append(4)
+ll.append(7)
+ll.append(3)
+ll.append(8)
+ll.append(6)
+ll.append(5)
+ll.append(1)
+ll.append(9)
 
 ll.print_list()
 print("----")
-print(ll.reverse_between(2, 3))
+ll.partition_list(5)
 ll.print_list()
 
-'''
-This is the first exercise I used a notebook with and succeeded in the first try.
-I'm very happy about this.
-
-I used the same action used in the reverse method. On the notebook, I cut off the 
-other parts of the LinkedList (Not actually) from the part I had to reverse. That 
-is why one of the nodes is called pre_cutoff, it's the one right before the m index.
-
-I reverse and then join the ends. Done.
-
-Also it made more sense with returning Boolean values instead of None. So I did.
-'''
-
-
-        
-
-
-
-
-
+# I had a lot of problem with this one becuase I had mistakenly set s_temp to 
+# first.head instead of second.head and just kept scratching my head thinking 
+# why the code isn't running properly. Noticed it and all was good.
