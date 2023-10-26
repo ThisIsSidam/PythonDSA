@@ -112,13 +112,26 @@ class DoublyLinkedList:
         before.next = new_node
         after.prev = new_node
 
-        
+        self.length += 1
         return False
+    
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        if index == 0:
+            return self.pop_first()
+        if index == self.length -1:
+            return self.pop()
 
-dll = DoublyLinkedList(0)
-for i in range(1, 10):
-    dll.append(i)
-dll.print_list()
+        temp = self.get(index)
+        before = temp.prev
+        after = temp.next
 
-dll.set_value(1, 10)
-dll.print_list()
+        before.next = after
+        after.prev = before
+
+        temp.next = None
+        temp.prev = None
+
+        self.length -= 1
+        return temp.value
