@@ -32,6 +32,13 @@ class Stack:
         self.top = new_node
         self.height = 1
 
+    def __init__(self):
+        self.top = None
+        self.height = 0
+
+    def is_empty(self):
+        return self.height == 0
+
     def print_stack(self):
         temp = self.top
         while temp:
