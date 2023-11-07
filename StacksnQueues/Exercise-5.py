@@ -1,6 +1,6 @@
 # Name : Anshu Kumar Singh
 # Date : 06/11/23
-# Title : Exercise 5 -
+# Title : Exercise 5 - Queue with two stacks
 
 '''
 You are given a class MyQueue which implements a queue using two stacks. Your task 
@@ -54,7 +54,7 @@ class Stack:
         return temp
 
 
-class Queue:
+class MyQueue:
     def __init__(self, value):
         self.stack1 = Stack()
         self.stack2 = Stack()
@@ -77,14 +77,19 @@ class Queue:
 
         while not self.stack2.is_empty():
             self.stack1.push(self.stack2.pop())      
-  
 
         self.length += 1
         return True
+    
+    def dequeue(self):
+        return self.stack1.pop()
 
-q = Queue(5)
+
+q = MyQueue(5)
 q.enqueue(4)
-q.print_queue()
 q.enqueue(7)
+q.print_queue()
+print("--")
+print(f"Popped {q.dequeue()}")
 print("--")
 q.print_queue()
