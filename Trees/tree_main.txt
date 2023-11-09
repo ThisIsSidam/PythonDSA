@@ -1,0 +1,89 @@
+Name : Anshu Kumar Singh
+Date : 09/11/23
+Title : Tree
+
+We can think of a tree as a linked list with nodes that point to multiple nodes.
+Doubly linked list nodes also pointed to two nodes, but it was one in the front
+and one in the back. We're talking about multiple 'next' attributes, no pointing 
+in the back.
+
+There is a type of tree called Binary tree. A node of a binary tree points to two 
+other nodes, and the pointers are called 'left' and 'right'. It will look something
+like this:
+
+              1
+        ↓----------↓
+        2          3
+    ↓------↓    ↓------↓
+    4      5    6      7
+
+The 1 node points to 2 and 3 nodes while node 2 points at 4 and 5, and node 3 points at 
+6 and 7.
+
+Similarly there could be tree with nodes that point to even more nodes at one time.
+We'll be focusing on binary trees where nodes point at 2 nodes maximum.
+
+------ Terms ------
+Full and Not Full Tree: A tree where every node points at zero nodes or two nodes. If a node 
+    points at a single node, the tree is called Not Full.
+
+Perfect Tree: A tree where all nodes are completely filled all the way across. The tree shown
+    above is a perfect tree. It has three levels and it is completely filled. If we were to 
+    remove 6 and 7 from it, it will still be full but not perfect anymore. 
+
+Remember: All Perfect trees are Full trees but not all Full trees are Perfect trees.
+
+Complete Tree: A tree which has all the gaps filled left to right. If we were to add a node to
+    left pointer of node 4 here, it wouldn't be Full or Perfect, but it would still be 
+    Complete as it's being filled left to right. 
+
+    If we also add the right pointer, then it will also become Full. And if we add all values
+    of the fourth level, it will become Perfect.
+
+Parent Node: A node whose left or right or both pointers point at a node is a 
+    parent node. 
+
+Child Node: A node being pointed is called a Child node. A child node can have only one parent
+    note. A child node with two parent nodes wouldn't be a tree. 
+
+    Child nodes can themselves be parent nodes, and a child node without any child nodes of its 
+    own is called a Leaf.
+
+------ Binary Search Tree ------
+In a Binary Search Tree, the nodes are organized. When adding a node, the value of the node is
+compared to the top-most node. If the value of the new node is lower than the value of the 
+top-most node, the node will be pointed by the left pointer of the node, and if the value is 
+larger, the new node will be pointed by the right pointer of the node. If the left or right
+pointer already points to a node, then the new node will again be compared and be placed on 
+left or right of that node according to the comparison result. This will keep going until the
+new node gets a place.
+
+Remember: Left if less-than, right if greater-than. Kinda like the number line. There's negative
+values on the left and positive values on the right. Right is always greater than the left.
+
+------ Big O ------
+In case of a single level, the number of elements is 1, which can be written as 2^1 -1.
+In case of a two levels, the number of elements is 3, which can be written as 2^2 -1.
+
+Similarly, the number of elements is 2^n-1 where n is the number of levels. And we can remove
+the 1 as it wouldn't matter in larger numbers. So, 2^n.
+
+Suppose we have to get to a node by value, we'll go through checking the values from the
+top-most node, we'll see if the value is greater than or less-than the top-most node's value 
+and move. 
+
+In case when there is only one level, it'll take us only one step. In case there are two levels, 
+it will take us 2 steps and hence the number of levels is the number of steps. 
+
+And for adding, removing or looking up a node, we'll have to get to it first. So for all, the 
+time complexity is O(log n).
+
+Comparison---------
+                Linked list ----- Tree
+
+Adding :          O(1)              O(log n)
+Removing :        O(n)              O(log n)
+Finding :         O(n)              O(log n)
+
+Tree is overall better. But in case we want a data structure with superfast additions while 
+removal and search don't matter much. Linked Lists are better.
