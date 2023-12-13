@@ -1,0 +1,112 @@
+Name : Anshu Kumar Singh
+Date : 14/12/23
+Title : Graph
+
+Here a node has a new name. A Vertex. Plural vertices. 
+When two vertices connect, it is called a connection, or properly an Edge.
+A third vertex can have an edge with one vertex, or the other one, or both.
+
+Suppose the vertices have an edge forming a triangle and you want to go from
+one vertex to another. You choose the side where you can get to the desired 
+vertex with one hop. 
+But with graphs, we can have weighted edges. like, the traingle formed has 
+15 weight height, while 2 weight base and 3 weight hypotenuse. Now going the 
+two hop route will be better.
+
+Another topic. 
+Direction. Like connections/friendships in apps. In facebook we have friends. 
+You follow them, they follow you back. This is bidirectional relationship. But
+when we follow celebs, the relationship is uni-directional.
+
+So edges can be weighted or non-weighted. Or directional or bidirectional.
+
+Trees are a form of a graphs. 
+Linkedlist is a form of a tree.
+Hence, Linkedlists are a form of a graph as well.
+
+Representing a graph. 1. Adjacency Matrix, 2. Adjacency List.
+
+1. Adjacency Matrix
+Suppose a pentagram with vertices A, B, C, D, and E. Each vertex has an edge with
+two other vertices. We can make a matrix with this. Like this:
+
+    A   B   C   D   E
+A   0   1   0   0   1
+B   1   0   1   0   0
+C   0   1   0   1   0
+D   0   0   1   0   1
+E   1   0   0   1   0
+
+Here 1 represents where the Y-axis alphabets have an edge with. Since alphabets 
+can't have a connection with themselves, there is a 45degree line of zeroes. 
+And since the edges are bi-directional, the matrix is symmetric. Which can 
+become asymmetric if even one edge is uni-directional.
+
+And if we have to store edge weights, we can replace these 1s with the weights of
+the edges in the Adjacency Matrix.
+
+2. Adjacency List
+We can show the same details with a dictionary like this:
+
+{
+    'A':['B', 'E'],
+    'B':['A', 'C'],
+    'C':['B', 'D'],
+    'D':['C', 'E'],
+    'E':['A', 'D']
+}
+
+We'll be using the list method to represent our graphs for now.
+
+Graph Big O
+-----
+
+Space Complexity
+--
+In case of AM, we store values for whether vertices have edges or not. But
+in case of AL, we only store for the ones the vertices have edges with.
+
+AM: O(|V^2|)
+AL: O(|V| + |E|)
+
+Adding Vertex
+--
+In AM, we'll have to add a row and a column. Basically rewrite the whole matrix.
+In AL, we just add an element to the Dictionary. We'ren't not making edges with it, 
+just adding it. like, 
+{
+    ..,
+    'F':[]
+}
+
+
+AM: O(|V^2|)
+AL: O(1)
+
+Adding an edge
+--
+When adding, we change values in the Matrix in AM. And since it is dictionary, we 
+also have the keys and can directly hop to it, so just add the vertex names to the 
+list. 
+
+AM == AL == O(1)
+
+Removing an edge
+--
+In AM, we just change two values. But in AL, we have to go through all the vertices the
+removed vertex had edges with and remove from their lists.
+
+AM = O(1)
+AL = O(|E|)
+
+Removing a vertex
+--
+In AM, same thing as adding a vertex. Now removing a row and a column. In AL, we have to
+first delete that key-value pair and then check all the vertices and the edge lists to 
+check for edges with the removed vertex.
+
+AM: O(|V^2|)
+AL: O(|V| + |E|)
+
+
+
