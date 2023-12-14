@@ -41,15 +41,3 @@ class Graph:
             return True
         return False
     
-graph = Graph()
-
-graph.add_vertex(3)
-graph.add_vertex(4)
-graph.add_edge(3, 4)
-graph.add_vertex(5)
-graph.add_edge(3, 5)
-graph.print_graph()
-
-print("--")
-graph.remove_vertex(3)
-graph.print_graph()
