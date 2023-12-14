@@ -17,7 +17,12 @@ The repository is organized into different folders, each focusing on a specific 
 
 - **Data Structures**
   - Linked Lists
-  - Yup, Nothing else. I just started.
+  - Doubly Linked Lists
+  - Stacks and Queues
+  - Trees (Binary Search Tree)
+  - HashTable
+  - Graph
+  - Recursive Binary Search Tree
 
 - **Algorithms**
   - Nothing is this section yet.
