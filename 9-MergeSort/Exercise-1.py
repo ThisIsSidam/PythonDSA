@@ -1,3 +1,7 @@
+# Name : Anshu Kumar Singh
+# Date : 19/12/23
+# Title : Merge function for LL
+
 '''
 The merge method takes in another LinkedList as an input and merges it with the current 
 LinkedList. The elements in both lists are assumed to be in ascending order, but the input 
