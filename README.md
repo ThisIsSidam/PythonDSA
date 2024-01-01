@@ -25,6 +25,11 @@ The repository is organized into different folders, each focusing on a specific 
   - Recursive Binary Search Tree
 
 - **Algorithms**
-  - Nothing is this section yet.
+  - Basic Sorts
+    - Bubble Sort
+    - Selection Sort
+    - Insertion Sort
+  - Merge Sort
+  - Quick Sort
 
 Feel free to explore the folders and dive into the code. 
